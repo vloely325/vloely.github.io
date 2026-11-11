@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PERSONAL NOTE</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#ffd9e2">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PERSONAL NOTE">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap">
+<style>
+:root{--bg:#f7f5f1;--surface:#fff;--ink:#1f2430;--muted:#6b7080;--line:#e4e0d8;--accent:#2b3a55;--tint:#eef1f6;--warn:#8a5a2b;--warn-bg:#f8f0e6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16181d;--surface:#1f2229;--ink:#eceae5;--muted:#9a9fae;--line:#2f333c;--accent:#9db4dd;--tint:#262b36;--warn:#e2b57d;--warn-bg:#2d2720;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#16181d;--surface:#1f2229;--ink:#eceae5;--muted:#9a9fae;--line:#2f333c;--accent:#9db4dd;--tint:#262b36;--warn:#e2b57d;--warn-bg:#2d2720;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.75 "Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:40px 22px 80px}
+nav{flex-wrap:wrap;gap:10px 18px;display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:44px;font-size:14px}
+nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--accent)}
+nav .brand{font-family:"Noto Serif KR",serif;font-weight:700;color:var(--ink);font-size:16px}
+h1,h2{font-family:"Noto Serif KR",serif;font-weight:700;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.35}
+h2{font-size:19px;margin:44px 0 14px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:4px;height:18px;background:var(--accent);border-radius:2px}
+.lead{color:var(--muted);margin:14px 0 0}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:12px}
+.cards{display:grid;gap:14px;margin-top:40px}
+.card{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;transition:.2s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .no{font-family:"Noto Serif KR",serif;color:var(--accent);font-size:13px}
+.card .t{font-size:18px;font-weight:500;margin:4px 0}
+.card .d{color:var(--muted);font-size:14px}
+.card .go{float:right;color:var(--accent);margin-top:-44px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.box h3{margin:0 0 8px;font-size:15px;font-weight:700;color:var(--accent)}
+ul{margin:0;padding-left:1.1em}li{margin:4px 0}li::marker{color:var(--accent)}
+.note{background:var(--warn-bg);color:var(--warn);border-radius:12px;padding:16px 20px;font-size:15px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:14px 18px;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--tint);font-size:13px;color:var(--accent);font-weight:700}
+tr:last-child td{border-bottom:0}td:first-child{font-weight:500;white-space:nowrap}
+.tag{display:inline-block;font-size:12px;background:var(--tint);color:var(--accent);padding:2px 10px;border-radius:99px;margin-bottom:8px}
+.tag.ai{background:var(--warn-bg);color:var(--warn)}
+.timeline{border-left:2px solid var(--line);margin-left:6px;padding-left:20px}
+.timeline .it{position:relative;padding:6px 0}
+.timeline .it::before{content:"";position:absolute;left:-27px;top:15px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.timeline b{font-weight:500}
+.job{margin-bottom:14px}.job .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
+.back{display:inline-block;margin-top:48px;color:var(--accent);text-decoration:none;font-size:15px}
+.pager{display:flex;justify-content:space-between;margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:14px}
+.pager a{color:var(--accent);text-decoration:none}
+.drow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0}
+.muted{color:var(--muted);font-size:13px}
+input[type=date],textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{width:100%;resize:vertical;line-height:1.7;margin:6px 0}
+input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.btn{font:inherit;font-size:14px;font-weight:500;cursor:pointer;background:var(--accent);color:var(--surface);border:1px solid var(--accent);border-radius:10px;padding:8px 18px}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.sm{font-size:12px;padding:3px 10px}
+.dday{font-family:"Noto Serif KR",serif;font-size:15px;color:var(--accent);margin:22px 0 8px}
+.cm{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.cm .top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px}
+.cm p{margin:0;white-space:pre-wrap;word-break:break-word}
+section{display:none}
+section.on{display:block}
+html:not(.js) section:target{display:block}
+html:not(.js):not(:has(section:target)) #home{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a href="#home" class="brand">PERSONAL NOTE</a><span><a href="#job-plan">취업 계획</a> · <a href="#diary">일기</a></span></nav>
+
+<section id="home">
+  <div class="eyebrow">Personal Notes</div>
+  <h1>생각을 정리하고,<br>다음 행동으로 잇기</h1>
+  <p class="lead">취업 계획과 매일 일기를 페이지별로 정리했습니다. 제목을 눌러 들어가세요.</p>
+  <div class="cards">
+    <a class="card" href="#job-plan"><div class="no">01</div><div class="t">단계별 취업준비 계획</div><div class="d">목표, 시험 일정, 약속, 경력기술서, 실행 제안</div><span class="go">→</span></a>
+    <a class="card" href="#diary"><div class="no">02</div><div class="t">매일 일기 · 퍼스널 댓글창</div><div class="d">하루 한 줄이라도 남기는 나만의 기록 (내 기기에만 저장)</div><span class="go">→</span></a>
+  </div>
+</section>
+
+<section id="job-plan">
+  <div class="eyebrow">01 · 단계별_취업준비_계획2.pdf</div>
+  <h1>단계별 취업 준비 계획</h1>
+  <h2>취업 목표 설정</h2>
+  <div class="grid2">
+    <div class="box"><span class="tag">Plan A</span><div>공무원시험 (9급보다는 7급 주력)</div></div>
+    <div class="box"><span class="tag">Plan B</span><div>항공사 일반직 (예약발권센터)</div></div>
+  </div>
+  <h2>시험 준비 계획</h2>
+  <div class="timeline">
+    <div class="it"><b>11월</b> · 한국사 80점 이상, 1급</div>
+    <div class="it"><b>12월</b> · 토익 900점 이상 목표</div>
+    <div class="it"><b>12월</b> · 항공교통안전관리자 3과목 총점 60 이상</div>
+    <div class="it"><b>2027년</b> · 공무원 시험 9급 및 7급</div>
+  </div>
+  <h2>필요하다고 느낀 역량</h2>
+  <div class="box"><ul><li>중국어</li><li>영어 스피킹</li><li>유효한 커리어 쌓기</li></ul></div>
+  <h2>지키고 싶은 마음가짐</h2>
+  <div class="box"><ul><li>확실히 필요한 것은 차근차근 이뤄 나간다.</li><li>현재 목표에 온전히 집중하되, 대안인 Plan B도 함께 준비한다.</li><li>엄마와 약속한 생활 원칙을 지켜 신뢰를 쌓는다.</li><li>한국사랑 영어는 누군가에게 스쳐 지나가는 퀘스트일 뿐 고비가 될 수 없다. 나에게도 마찬가지여야 한다.</li></ul></div>
+  <h2>엄마와의 구체적인 약속</h2>
+  <div class="grid2">
+    <div class="box"><h3>식생활</h3><ul><li>야식 끊기 (8시 이후 물, 약만 먹기)</li><li>배달시키지 않기</li></ul></div>
+    <div class="box"><h3>소비·시간 관리</h3><ul><li>한 달 지출 70만원 이내</li><li>6시 30분 기상</li><li>매일 순공부시간 8시간 달성</li></ul></div>
+  </div>
+  <h2>경력기술서</h2>
+  <div class="box job"><h3>1. 유니에스 시큐리티</h3><div class="meta">근무기간 6개월 · 대한항공 미주행 항공편 보안 인터뷰어</div><ul><li>인천국제공항 대한항공 미주행 승객 대상 보안 인터뷰 및 프로파일링 수행</li><li>항공 보안 규정에 따른 승객 확인 및 보안 관련 질문 진행</li><li>승객의 불편을 최소화하면서 보안 절차에 대한 이해와 협조 유도</li><li>보안 절차의 정확한 준수 및 원활한 항공편 운항 지원</li><li>DEPORTEE 승객 인계</li></ul></div>
+  <div class="box job"><h3>2. 트랜스코스모스코리아</h3><div class="meta">근무기간 1년 8개월 · 대한항공 예약발권센터 인바운드 상담사</div><ul><li>GDS 프로그램 활용 대한항공 국내선·국제선 항공권 예약 및 발권 관련 고객 상담</li><li>스카이패스 마일리지 제도 및 항공 서비스 관련 문의 응대</li><li>항공편 지연·결항 등 비정상 운항에 따른 고객 문의 및 변경 절차 안내</li><li>운임 규정과 예약·발권 절차에 따른 정확한 정보 제공</li><li>고객 요구사항 파악 및 신속하고 정확한 상담을 통한 서비스 품질 유지</li></ul></div>
+  <h2>실행을 돕는 추가 제안</h2>
+  <p class="note">원본 사진에 없는 제안입니다. 모든 항목을 한꺼번에 늘리기보다, 지원하려는 직무에 필요한 준비부터 선택하는 데 목적이 있습니다.</p>
+  <div style="height:14px"></div>
+  <div class="box"><span class="tag ai">제안 1</span><h3>주력 목표와 대안 정하기</h3><ul><li>주력 목표를 한 문장으로 정한다. 예: 항공사 일반직 또는 예약·발권 관련 직무.</li><li>공무원 시험을 주력으로 삼을지 대안으로 둘지 결정한다. 희망 직렬과 준비 범위를 확인한 뒤 우선순위를 정한다.</li><li>자격증과 언어는 희망 채용공고의 필수·우대 요건과 비교한다. 항공교통안전관리자도 목표 직무와의 연결성을 확인한 뒤 시간을 배분한다.</li></ul></div>
+  <div style="height:14px"></div>
+  <div class="box"><span class="tag ai">제안 2</span><h3>한 번에 집중할 과제 줄이기</h3><ul><li>11월에는 한국사를 우선 과제로 두고, 12월 토익과 항공교통안전관리자는 실제 접수·시험 일정과 현재 실력을 확인한 뒤 주력 과제를 정한다.</li><li>중국어는 채용 활용도가 확인되기 전까지 보조 과제로 둔다. 영어 스피킹은 짧은 자기소개나 경력 설명으로 작게 시작한다.</li><li>계획표에 시험명, 접수 마감일, 응시일, 목표 점수·등급, 이번 주 할 일을 따로 적는다. 일정은 시행기관의 최신 공고로 확인한다.</li></ul></div>
+  <div style="height:14px"></div>
+  <div class="box"><span class="tag ai">제안 3</span><h3>기존 경력을 지원 자료로 만들기</h3><ul><li>보안 인터뷰 6개월과 예약·발권센터 상담 경력을 경력기술서에 정리한다.</li><li>규정 확인, 예약·발권, 비정상 운항 응대 경험 중 실제 사례를 골라 상황·내 행동·결과로 정리한다. 고객 개인정보는 제외한다.</li><li>새 실무 경험은 부족한 역량을 먼저 정한다. 예: 엑셀로 가상의 문의 유형을 집계하고 개선안을 작성.</li></ul></div>
+  <div style="height:14px"></div>
+  <div class="box"><span class="tag ai">제안 4</span><h3>생활 약속을 기록 가능한 행동으로 바꾸기</h3><ul><li>야식과 배달의 기준, 주간 식비 한도를 엄마와 함께 구체적으로 정한다. 배고플 때 먹을 대체 식사도 미리 준비한다.</li><li>일주일에 한 번 공부 진도와 지출을 10분간 점검한다. 지키지 못한 날에는 이유와 다음 행동을 적고 다시 시작한다.</li><li>컨디션이 좋지 않은 날에는 복습 10분처럼 작은 분량으로 조정한다. 치료나 휴식이 필요한 경우에는 그 일정도 계획에 포함한다.</li></ul></div>
+  <div class="pager"><a href="#home">← 홈</a><a href="#diary">다음: 일기 →</a></div>
+</section>
+
+<section id="diary">
+  <div class="eyebrow">02 · Daily Diary</div>
+  <h1>매일 일기 · 퍼스널 댓글창</h1>
+  <p class="lead">댓글처럼 한 줄씩 남기면 날짜별로 쌓입니다. 글은 이 기기의 브라우저에만 저장되고, 사이트가 공개돼도 다른 사람에게 보이지 않습니다.</p>
+  <h2>오늘 남기기</h2>
+  <div class="box">
+    <div class="drow"><input type="date" id="d-date" aria-label="날짜"><span id="d-mode" class="tag" hidden>수정 중</span></div>
+    <textarea id="d-text" rows="4" maxlength="2000" placeholder="오늘은 어땠나요? 한 줄이어도 좋아요."></textarea>
+    <div class="drow"><span id="d-count" class="muted">0 / 2000</span><span><button id="d-cancel" class="btn ghost" hidden>취소</button> <button id="d-save" class="btn">남기기</button></span></div>
+    <div id="d-msg" class="muted" role="status"></div>
+  </div>
+  <h2>지난 기록</h2>
+  <div id="d-list"></div>
+  <div class="drow" style="margin-top:18px"><span class="muted">브라우저 데이터를 지우면 일기도 사라집니다. 가끔 백업하세요.</span><button id="d-export" class="btn ghost">백업 내려받기</button></div>
+  <div class="pager"><a href="#job-plan">← 이전</a><a href="#home">홈 →</a></div>
+</section>
+</div>
+<script>
+(function(){
+var ids=["home","job-plan","diary"];
+document.documentElement.classList.add("js");
+function cur(){return (location.hash||"#home").slice(1)}
+function go(h){
+  if(ids.indexOf(h)<0)h="home";
+  ids.forEach(function(i){document.getElementById(i).classList.toggle("on",i===h)});
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="#"]');
+  if(!a)return;
+  var h=a.getAttribute("href").slice(1);
+  e.preventDefault();go(h);
+  try{history.pushState(null,"","#"+h)}catch(x){try{location.hash=h}catch(y){}}
+});
+window.addEventListener("hashchange",function(){go(cur())});
+window.addEventListener("popstate",function(){go(cur())});
+go(cur());
+})();
+(function(){
+var KEY="pn-diary-v1",$=function(i){return document.getElementById(i)};
+var data=[],editId=null,delId=null;
+function load(){try{data=JSON.parse(localStorage.getItem(KEY)||"[]")||[]}catch(e){data=[]}}
+function store(){try{localStorage.setItem(KEY,JSON.stringify(data));return true}catch(e){return false}}
+function today(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+function nowT(){var d=new Date();return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2)}
+function lab(k){var p=k.split("-"),d=new Date(+p[0],+p[1]-1,+p[2]);return p[0]+"년 "+(+p[1])+"월 "+(+p[2])+"일 "+"일월화수목금토".charAt(d.getDay())+"요일"}
+function msg(t){$("d-msg").textContent=t}
+function render(){
+  var box=$("d-list");box.innerHTML="";
+  if(!data.length){var e=document.createElement("p");e.className="muted";e.textContent="아직 기록이 없어요. 첫 한 줄을 남겨보세요.";box.appendChild(e);return}
+  var days={};data.forEach(function(x){(days[x.date]=days[x.date]||[]).push(x)});
+  Object.keys(days).sort().reverse().forEach(function(k){
+    var h=document.createElement("div");h.className="dday";h.textContent=lab(k);box.appendChild(h);
+    days[k].sort(function(a,b){return b.time<a.time?-1:1}).forEach(function(x){
+      var c=document.createElement("div");c.className="cm";
+      var top=document.createElement("div");top.className="top";
+      var tm=document.createElement("span");tm.className="muted";tm.textContent=x.time;
+      var ac=document.createElement("span");
+      var eb=document.createElement("button");eb.className="btn ghost sm";eb.textContent="수정";
+      eb.onclick=function(){editId=x.id;$("d-date").value=x.date;$("d-text").value=x.text;$("d-mode").hidden=false;$("d-cancel").hidden=false;$("d-save").textContent="수정 완료";count();$("d-text").focus();window.scrollTo(0,0)};
+      var db=document.createElement("button");db.className="btn ghost sm";db.textContent=delId===x.id?"정말 삭제?":"삭제";
+      db.onclick=function(){if(delId===x.id){data=data.filter(function(y){return y.id!==x.id});delId=null;store();render()}else{delId=x.id;render()}};
+      ac.appendChild(eb);ac.appendChild(document.createTextNode(" "));ac.appendChild(db);
+      top.appendChild(tm);top.appendChild(ac);
+      var p=document.createElement("p");p.textContent=x.text;
+      c.appendChild(top);c.appendChild(p);box.appendChild(c)})})
+}
+function count(){$("d-count").textContent=$("d-text").value.length+" / 2000"}
+function reset(){editId=null;$("d-text").value="";$("d-mode").hidden=true;$("d-cancel").hidden=true;$("d-save").textContent="남기기";count()}
+$("d-text").addEventListener("input",count);
+$("d-cancel").onclick=function(){reset();msg("")};
+$("d-save").onclick=function(){
+  var t=$("d-text").value.trim(),d=$("d-date").value||today();
+  if(!t){msg("내용을 입력해 주세요.");return}
+  if(editId){data.forEach(function(x){if(x.id===editId){x.text=t;x.date=d}})}
+  else data.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),date:d,time:nowT(),text:t});
+  if(store()){msg(editId?"수정했어요.":"남겼어요.")}else{msg("저장하지 못했어요. 브라우저의 저장 허용 설정을 확인하세요.")}
+  reset();render()
+};
+$("d-export").onclick=function(){
+  var b=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(b);a.download="personal-note-diary-"+today()+".json";document.body.appendChild(a);a.click();a.remove()
+};
+load();$("d-date").value=today();count();render();
+})();
+</script>
+</body>
+</html>
